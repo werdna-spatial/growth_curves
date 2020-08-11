@@ -4,13 +4,15 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--MemCheck', dest='MemChk', action='store_true')
-parser.add_argument("NumIter")
-parser.set_defaults(MemChk=False, NumIter=1000)
+parser.add_argument("(VALnits")
+parser.add_argument("(VALpits")
+parser.add_argument("(VALburnin")
+parser.set_defaults(MemChk=False, VALnits=1000,VALpits=100,VALburnin=500)
 args = parser.parse_args()
 
 if MemChk:
   tracemalloc.start()
-Model_Run(NumIter)
+Model_Run(VALnits,VALpits,VALburnin)
 if MemChk:
   current, peak = tracemalloc.get_traced_memory()
   print(f"Current memory usage is {current / 10**6}MB; Peak was {peak / 10**6}MB")
