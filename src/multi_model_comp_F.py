@@ -1,5 +1,6 @@
 import numpy 
-import pylab 
+#import pylab 
+import matplotlib.pylab
 import scipy.integrate 
 import batch_fitting_module 
 import time
