@@ -4,9 +4,9 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--MemCheck', dest='MemChk', action='store_true')
-parser.add_argument("(VALnits")
-parser.add_argument("(VALpits")
-parser.add_argument("(VALburnin")
+parser.add_argument("VALnits")
+parser.add_argument("VALpits")
+parser.add_argument("VALburnin")
 parser.set_defaults(MemChk=False, VALnits=1000,VALpits=100,VALburnin=500)
 args = parser.parse_args()
 
