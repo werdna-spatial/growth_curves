@@ -1,5 +1,5 @@
 import tracemalloc
-from multi_model_comp_F import Model_Run
+import multi_model_comp_F 
 
 tracemalloc.start()
 Model_Run()
