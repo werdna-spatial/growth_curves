@@ -13,7 +13,7 @@ import matplotlib.backends.backend_pdf
 #import time
 #import matplotlib.backends.backend_pdf
 
-def Model_Run():
+def Model_Run(VALnits,VALpits,VALburnin):
 	#########################################################
 	################## DATA - test case #####################
 	#########################################################
@@ -68,8 +68,8 @@ def Model_Run():
 
 	# specify # of iterations
 	#nits,pits,burnin=1000000,100000,10000
-	nits,pits,burnin=1000,100,500
-
+	#nits,pits,burnin=1000,100,500
+	nits,pits,burnin=VALnits,VALpits,VALburnin
 	# start timer
 	a = time.time()
 
