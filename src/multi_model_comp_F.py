@@ -5,7 +5,7 @@ from batch_fitting_module import *
 import time
 import matplotlib.backends.backend_pdf
 
-def main():
+def Model_Run():
 	#########################################################
 	################## DATA - test case #####################
 	#########################################################
@@ -162,5 +162,3 @@ def main():
 	pdf.close()
 
 
-if __name__ == "__main__":
-    main()
