@@ -1,10 +1,17 @@
-import numpy 
-#import pylab 
-import matplotlib.pylab
-import scipy.integrate 
-import batch_fitting_module 
+from numpy import *
+from pylab import *
+from scipy.integrate import *
+from batch_fitting_module import *
 import time
 import matplotlib.backends.backend_pdf
+
+#import numpy 
+#import pylab 
+#import matplotlib.pylab
+#import scipy.integrate 
+#import batch_fitting_module 
+#import time
+#import matplotlib.backends.backend_pdf
 
 def Model_Run():
 	#########################################################
