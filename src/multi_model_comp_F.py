@@ -13,7 +13,7 @@ import matplotlib.backends.backend_pdf
 #import time
 #import matplotlib.backends.backend_pdf
 
-def Model_Run(VALnits,VALpits,VALburnin):
+def Model_Run(RUN_ID,VALnits,VALpits,VALburnin):
 	#########################################################
 	################## DATA - test case #####################
 	#########################################################
@@ -64,7 +64,8 @@ def Model_Run(VALnits,VALpits,VALburnin):
 	chis,aics,rsqs=r_[[]],r_[[]],r_[[]]
 
 	# master pdf
-	pdf = matplotlib.backends.backend_pdf.PdfPages("../figures/test_selection.pdf")
+	pdf_name='../figures/test_selection_'+RUN_ID+'.pdf'
+	pdf = matplotlib.backends.backend_pdf.PdfPages(pdf_name)
 
 	# specify # of iterations
 	#nits,pits,burnin=1000000,100000,10000
