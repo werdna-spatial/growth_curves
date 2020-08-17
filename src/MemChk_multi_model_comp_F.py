@@ -1,5 +1,5 @@
 import tracemalloc
-import multi_model_comp_F 
+import multi_model_comp_F.py 
 import argparse
 
 parser = argparse.ArgumentParser()
