@@ -10,6 +10,8 @@ parser.set_defaults(VALnits=1000,VALpits=100,VALburnin=500)
 args = parser.parse_args()
 
 ##tracemalloc.start()
+Print("VALnits,VALpits,VALburnin")
+Print(VALnits,VALpits,VALburnin, sep=',')
 Model_Run(VALnits,VALpits,VALburnin)
 ##current, peak = tracemalloc.get_traced_memory()
 ##print(f"Current memory usage is {current / 10**6}MB; Peak was {peak / 10**6}MB")
