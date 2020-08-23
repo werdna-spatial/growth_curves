@@ -1,7 +1,7 @@
 from numpy import *
 from pylab import *
 from scipy.integrate import *
-
+import matplotlib.backends.backend_pdf
 #########################################################
 ################## MODEL FUNCTIONS#######################
 #########################################################
@@ -82,6 +82,12 @@ def master(times,dat,func,inits,pars,pnames,pnames_print,nits,pits,burnin,pdf,ti
     plot_posterior_dists(pall,pnames_print,pdf)
     return pall,likelihoods,iterations,rmd
 
+def master_object(master_obj):
+    pdf_name=master_obj[11]
+    pdf = matplotlib.backends.backend_pdf.PdfPages(pdf_name)
+    pall,likelihoods,iterations,rmd =master(*master_obj)
+    pdf.close()
+    return pall, likelihoods, iterations, rmd
 #########################################################
 ############# MODEL-DATA FITTING FUNCTIONS ##############
 #########################################################

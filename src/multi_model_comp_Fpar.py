@@ -1,9 +1,9 @@
 from numpy import *
-#from pylab import *
+from pylab import *
 from scipy.integrate import *
 from batch_fitting_module import *
 import time
-import matplotlib.backends.backend_pdf
+import matplotlib.backends.backend_pdf   
 
 #import numpy 
 #import pylab 
@@ -64,7 +64,7 @@ def Model_Run(RUN_ID,VALnits,VALpits,VALburnin):
 	chis,aics,rsqs=r_[[]],r_[[]],r_[[]]
 
 	# master pdf
-	pdf_name='../figures/test_selection_'+RUN_ID+'.pdf'
+	pdf_name='../figures/'+RUN_ID+'_combo_'+'test_selection.pdf'
 	pdf = matplotlib.backends.backend_pdf.PdfPages(pdf_name)
 
 	# specify # of iterations
@@ -73,14 +73,28 @@ def Model_Run(RUN_ID,VALnits,VALpits,VALburnin):
 	nits,pits,burnin=VALnits,VALpits,VALburnin
 	# start timer
 	a = time.time()
+	#
+	# Create input list
 
 	# model with 0 infection classes
-	pars = (1e-6,1e-8,50)
-	pnames = ['host growth rate','transfer affinity','burst size']
-	pnames_print = ['$\mu$','$\phi$',r'$\beta$']
+	pdf_name_master = '../figures/' + RUN_ID + '_IC_0_' + 'test_selection.pdf'
+	pars = (1e-6, 1e-8, 50)
+	pnames = ['host growth rate', 'transfer affinity', 'burst size']
+	#pnames_print = ['$\mu$', '$\phi$', r'$\beta$']
 	lab = 'No infected classes'
-	inits = r_[[dat['hms'][0],dat['vms'][0]]]
-	pall,likelihoods,iterations,rmd = master(times,dat,zero_i,inits,pars,pnames,pnames_print,nits,pits,burnin,pdf,lab)
+	inits = r_[[dat['hms'][0], dat['vms'][0]]]
+	master_obj=[times,dat,zero_i,inits,pars,pnames,pnames_print,nits,pits,burnin,pdf,lab]
+	pdf_name_test = master_obj[11]
+	print(pdf_name_test)
+	masterlist.append(master_obj)
+	# model with 0 infection classes
+	#pars = (1e-6,1e-8,50)
+	#pnames = ['host growth rate','transfer affinity','burst size']
+	pnames_print = ['$\mu$','$\phi$',r'$\beta$']
+	#lab = 'No infected classes'
+	#inits = r_[[dat['hms'][0],dat['vms'][0]]]
+	#pall,likelihoods,iterations,rmd = master(times,dat,zero_i,inits,pars,pnames,pnames_print,nits,pits,burnin,pdf,lab)
+	pall, likelihoods, iterations, rmd = master_object(master_obj)
 	chi,aic,rsq = get_stats(dat,zero_i,inits,times,pars,pnames)
 	ax1 = plot_model(dat,zero_i,inits,times,rmd,lab,ax1)
 	chis,aics,rsqs = append(chis,chi),append(aics,aic),append(rsqs,rsq)
